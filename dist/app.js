@@ -28,18 +28,18 @@ function Run() {
         try {
             yield mongoose_1.default.connect(`mongodb+srv://Christianism:Giw9VUvemSSgTyrc@cluster0.vhkuyua.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`);
             console.log('Database connect with mongoose');
-            app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
-                res.send({
-                    message: "Christianism server is running"
-                });
-            }));
-            app.use('/', routes_1.default);
         }
         catch (error) {
             console.log(error);
         }
     });
 }
+app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.send({
+        message: "Christianism server is running"
+    });
+}));
+app.use('/', routes_1.default);
 Run();
 app.listen(port, () => {
     console.log(`Server is running at ${5000}`);

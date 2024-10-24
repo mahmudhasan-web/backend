@@ -1,6 +1,6 @@
 import mongoose, { model } from "mongoose";
 
-const chapterSchema = new mongoose.Schema({
+const chapterDataSchema = new mongoose.Schema({
     chapterName: String,
     subChapterName: String,
     contentsObject: [
@@ -11,4 +11,4 @@ const chapterSchema = new mongoose.Schema({
     ]
 })
 
-export default mongoose.model('chapterSchema', chapterSchema) 
+export default mongoose.model('chapterSchema', chapterDataSchema) 

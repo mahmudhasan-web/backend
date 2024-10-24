@@ -16,22 +16,20 @@ async function Run() {
     try {
         await mongoose.connect(`mongodb+srv://Christianism:Giw9VUvemSSgTyrc@cluster0.vhkuyua.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
         console.log('Database connect with mongoose');
-
-        app.get('/', async (req, res) => {
-            res.send({
-                message: "Christianism server is running"
-            })
-        })
-
-        app.use('/', router)
-
-
     }
     catch (error) {
         console.log(error);
 
     }
 }
+
+app.get('/', async (req, res) => {
+    res.send({
+        message: "Christianism server is running"
+    })
+})
+
+app.use('/', router)
 
 Run()
 

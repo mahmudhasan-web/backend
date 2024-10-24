@@ -25,13 +25,33 @@ const chapterSchema_1 = __importDefault(require("./chapterSchema"));
 //     ]
 // }
 const createChapterIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const chapter = yield chapterSchema_1.default.insertMany(payload);
-    return chapter;
+    const query = { chapterName: payload.chapterName, subChapterName: payload.subChapterName };
+    const result = yield chapterSchema_1.default.findOne().and(query);
+    console.log(result);
+    const updateArray = payload.contentsObject;
+    console.log(updateArray);
+    if (result) {
+        const updateDoc = {
+            $push: {
+                contentsObject: {
+                    $each: updateArray,
+                },
+            }
+        };
+        const result = yield chapterSchema_1.default.updateOne({ subChapterName: payload.subChapterName }, updateDoc);
+        console.log(result);
+        return result;
+    }
+    else {
+        const chapter = yield chapterSchema_1.default.insertMany(payload);
+        return chapter;
+    }
 });
 const getChapterFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const chapter = yield chapterSchema_1.default.find();
     return chapter;
 });
-const updateChapterIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-});
+// const updateChapterIntoDB = async (payload: any) => {
+//     const query = {$and : {chapterName : payload.chapterName}, {}}
+// }
 exports.chapterService = { createChapterIntoDB, getChapterFromDB };

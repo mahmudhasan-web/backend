@@ -1,5 +1,5 @@
 import { array } from "zod";
-import chapterSchema from "./chapterSchema"
+import chapterDataSchema from "./chapterDataSchema"
 
 // interface IChapter {
 //     chapterName: String,
@@ -16,7 +16,7 @@ import chapterSchema from "./chapterSchema"
 const createChapterIntoDB = async (payload: any) => {
 
     const query: any = { chapterName: payload.chapterName, subChapterName: payload.subChapterName }
-    const result = await chapterSchema.findOne().and(query)
+    const result = await chapterDataSchema.findOne().and(query)
     console.log(result);
     const updateArray = payload.contentsObject
 
@@ -34,21 +34,21 @@ const createChapterIntoDB = async (payload: any) => {
             }
         }
 
-        const result = await chapterSchema.updateOne({ subChapterName: payload.subChapterName }, updateDoc)
+        const result = await chapterDataSchema.updateOne({ subChapterName: payload.subChapterName }, updateDoc)
         console.log(result);
 
         return result
 
     }
     else {
-        const chapter = await chapterSchema.insertMany(payload)
+        const chapter = await chapterDataSchema.insertMany(payload)
         return chapter
     }
 
 }
 
 const getChapterFromDB = async () => {
-    const chapter = await chapterSchema.find()
+    const chapter = await chapterDataSchema.find()
     return chapter
 }
 
@@ -59,4 +59,4 @@ const getChapterFromDB = async () => {
 // }
 
 
-export const chapterService = { createChapterIntoDB, getChapterFromDB }
+export const chapterDataService = { createChapterIntoDB, getChapterFromDB }

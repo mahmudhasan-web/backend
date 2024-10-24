@@ -1,6 +1,6 @@
 import z from 'zod'
 
-const chapterValidationSchema = z.object({
+const chapterDataValidationSchema = z.object({
     chapterName: z.string(),
     subChapterName: z.string(),
     contentsObject: z.array(
@@ -12,4 +12,4 @@ const chapterValidationSchema = z.object({
 })
 
 
-export const chapterValidation = { chapterValidationSchema }
+export const chapterDataValidation = { chapterDataValidationSchema }
