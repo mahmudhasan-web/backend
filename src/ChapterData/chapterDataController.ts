@@ -12,7 +12,7 @@ const createChapterData = async (req: Request, res: Response) => {
 const getChapterData = async(req: Request, res: Response)=>{
     console.log(req.params.id);
     
-    const result = await  chapterDataService.getChapterFromDB()
+    const result = await  chapterDataService.getChapterDataFromDB()
     res.status(200).json(result)
 
 }

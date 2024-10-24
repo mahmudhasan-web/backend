@@ -5,10 +5,17 @@ import { chapterControl } from "./chapterControl";
 
 const route = Router()
 
-route.post('/create-chapter',
+route.post('/create',
     validateRequest(chapterValidation.chapterValidationSchema),
     chapterControl.createChapter
 )
 
+route.post('/create/subchapter',
+    validateRequest(chapterValidation.chapterValidationSchema),
+    chapterControl.createSubChapter
+)
 
-export const  chapterRoute = route;
+route.get('/', chapterControl.getChapter)
+
+
+export const chapterRoute = route;

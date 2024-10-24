@@ -17,10 +17,10 @@ const createChapterIntoDB = async (payload: any) => {
 
     const query: any = { chapterName: payload.chapterName, subChapterName: payload.subChapterName }
     const result = await chapterDataSchema.findOne().and(query)
-    console.log(result);
+    // console.log(result);
     const updateArray = payload.contentsObject
 
-    console.log(updateArray);
+    // console.log(updateArray);
 
 
     if (result) {
@@ -35,7 +35,7 @@ const createChapterIntoDB = async (payload: any) => {
         }
 
         const result = await chapterDataSchema.updateOne({ subChapterName: payload.subChapterName }, updateDoc)
-        console.log(result);
+        // console.log(result);
 
         return result
 
@@ -47,7 +47,7 @@ const createChapterIntoDB = async (payload: any) => {
 
 }
 
-const getChapterFromDB = async () => {
+const getChapterDataFromDB = async () => {
     const chapter = await chapterDataSchema.find()
     return chapter
 }
@@ -59,4 +59,4 @@ const getChapterFromDB = async () => {
 // }
 
 
-export const chapterDataService = { createChapterIntoDB, getChapterFromDB }
+export const chapterDataService = { createChapterIntoDB, getChapterDataFromDB }

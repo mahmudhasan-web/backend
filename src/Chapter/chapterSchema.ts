@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const chapterSchema = new mongoose.Schema({
     chapterName: String,
-    subChapterName: Array,
+    subChapterNames: Array,
     startPage: Number,
     endPage: Number,
 
